@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>ArcGISonline into a webmap</title>
+    <style>
+    html, body, #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+        <link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/css/main.css">
+        <script src="https://js.arcgis.com/4.17/"></script>
+        <script>
+        require([
+            "esri/WebMap",
+            "esri/views/SceneView",
+            "dojo/domReady!"
+        ], function(
+               WebMap,
+               SceneView)
+               {
+            var mywebmap = new WebMap ({
+                portalItem:{   //"9b0015ae49a648028d660f0302225c8f"
+                    id: "9b0015ae49a648028d660f0302225c8f" 
+                }
+            });
+            // 2. Create a new SceneView
+            var myscene = new SceneView({
+                //2.a set map property SceneView
+                map: mywebmap,
+                //2.b set up the container properties
+                container: "viewDiv",
+                camera:{//set up the camera
+                position:{
+                x: -120.5,
+                y: 37,
+                z: 450000},
+                //2.d set the camera heading
+                heading: 35,
+                //2.e set the camera tilt
+                tilt: 60
+                }
+                
+                
+                })
+            });
+    </script>
+    </head>
+<body>
+<div id="viewDiv"></div>
+</body>
+</html>
